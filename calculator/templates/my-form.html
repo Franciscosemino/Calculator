@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" style="background-image:url("math.jpg");">
+<title>Calculadora</title>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes style="background-color: #f89406;border-color: #e96506;color: #ffffff;">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+<body style="font: 100% sans-serif;">
+    <h1 style="text-align:center;">CALCULADORA</h1>
+  <article style="white-space:pre;text-align:center;border: 5px solid red;">{{session_var}}</article>
+    <form action="." method="POST" style="text-align:center;">
+        <input type="text" name="command" style="width:680px;">
+        <input type="submit" name="my-form" value="Send">
+    </form>
+    <h2 style="text-align:center;background-color:black;color:white;">
+      Operadores soportados: Multiplicación("*"), Division("/"), Sustracción("-"),
+      Adición("+"), Logaritmo("log x"), Guardar(guardar la sesion actual. Uso:
+      "guardar x", donde x es el nombre con el que guardar la sesion), Recuperar(
+      recuperar una sesion guardada. Uso: "recuperar x", donde x es el nombre de
+      la sesion a recuperar), Limpiar(limpia la sesion actual. Uso: "limpiar").
+      (Los comandos son sin comillas)<br >
+      IMPORTANTE: Recordar usar parentesis para los numeros negativos.
+    </h2>
+</body>
+</html>
